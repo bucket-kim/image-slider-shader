@@ -1,17 +1,22 @@
-import { OrbitControls } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
+import { Fragment } from "react/jsx-runtime";
 import "./App.css";
+import R3F from "./R3F/R3F";
+import UI from "./UI/UI";
 
 function App() {
   return (
-    <Canvas id="root" camera={{ position: [0, 0, 5], fov: 30 }}>
-      <color attach="background" args={["#201d24"]} />
-      <OrbitControls />
-      <mesh>
-        <boxGeometry />
-        <meshBasicMaterial color="white" />
-      </mesh>
-    </Canvas>
+    <Fragment>
+      <section
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+        }}
+      >
+        <UI />
+        <R3F />
+      </section>
+    </Fragment>
   );
 }
 
