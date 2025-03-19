@@ -1,4 +1,3 @@
-import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import ImageSlider from "./ImageSlider/ImageSlider";
 
@@ -15,7 +14,7 @@ const R3F = () => {
       }}
     >
       <color attach="background" args={["#201d24"]} />
-      <OrbitControls />
+      {/* <OrbitControls /> */}
       <ImageSlider width={3} height={4} fillPercent={0.75} />
     </Canvas>
   );

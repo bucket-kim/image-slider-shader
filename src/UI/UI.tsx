@@ -48,12 +48,8 @@ const UI = () => {
     <UIStyledContainer>
       <div className="slider-container">
         <ShortTitle prevIdx={prevIdx} />
-        <Arrow direction="left" onClick={leftClick} isAnimating={isAnimating} />
-        <Arrow
-          direction="right"
-          onClick={rightClick}
-          isAnimating={isAnimating}
-        />
+        <Arrow direction="left" onClick={leftClick} />
+        <Arrow direction="right" onClick={rightClick} />
         <Subtitle prevIdx={prevIdx} />
         <Description prevIdx={prevIdx} />
       </div>

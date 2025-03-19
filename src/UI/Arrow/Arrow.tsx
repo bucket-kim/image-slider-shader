@@ -4,15 +4,14 @@ import ArrowStyleContainer from "./ArrowStyleContainer";
 interface ArrowProps {
   direction: string;
   onClick: () => void;
-  isAnimating: boolean;
 }
 
-const Arrow: FC<ArrowProps> = ({ direction, onClick, isAnimating }) => {
+const Arrow: FC<ArrowProps> = ({ direction, onClick }) => {
   return (
     <ArrowStyleContainer
       direction={direction as "left" | "right"}
       onClick={onClick}
-      disabled={isAnimating}
+      //   disabled={isAnimating}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
