@@ -33,7 +33,7 @@ const SubtitleStyleContainer = styled.div`
       @media (min-width: 768px) {
         text-align: left;
       }
-      span {
+      .char {
         display: inline-block;
       }
     }

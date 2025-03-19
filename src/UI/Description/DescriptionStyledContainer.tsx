@@ -21,6 +21,14 @@ const DescriptionStyledContainer = styled.div`
     font-weight: 100;
     margin-left: 1rem;
     position: relative;
+
+    .description {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: block;
+    }
   }
 `;
 

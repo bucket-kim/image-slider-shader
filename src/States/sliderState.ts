@@ -47,6 +47,16 @@ export const sliderState = create<sliderStateTypes>((set) => ({
     },
   ],
 
+  mounted: false,
+  setMounted: (mounted: boolean) => {
+    set({ mounted: mounted });
+  },
+
+  isAnimating: false,
+  setIsAnimating: (isAnimating: boolean) => {
+    set({ isAnimating: isAnimating });
+  },
+
   nextSlide: () =>
     set((state) => ({
       currSlide: (state.currSlide + 1) % state.items.length,

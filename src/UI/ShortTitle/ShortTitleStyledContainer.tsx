@@ -26,6 +26,17 @@ const ShortTitleStyledContainer = styled.div`
       height: 9rem;
       line-height: 9rem;
     }
+    .char {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: block;
+
+      @media (min-width: 768px) {
+        text-align: center;
+      }
+    }
   }
 `;
 
