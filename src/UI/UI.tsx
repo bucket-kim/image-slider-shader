@@ -14,7 +14,6 @@ const UI = () => {
     prevSlide,
     direction,
     setIsAnimating,
-    isAnimating,
     setMounted,
   } = sliderState();
 

@@ -10,8 +10,7 @@ interface DescriptionProps {
 const Description: FC<DescriptionProps> = ({ prevIdx }) => {
   const spanRef = useRef<HTMLSpanElement[]>([]);
 
-  const { currSlide, items, isAnimating, setIsAnimating, mounted } =
-    sliderState();
+  const { currSlide, items } = sliderState();
 
   // useEffect(() => {
   //   spanRef.current.forEach((span, idx) => {

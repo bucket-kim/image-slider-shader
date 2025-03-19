@@ -12,7 +12,7 @@ interface ShortTitleProps {
 const ShortTitle: FC<ShortTitleProps> = ({ prevIdx }) => {
   const spanRefs = useRef<HTMLSpanElement[]>([]);
 
-  const { currSlide, items, direction, isAnimating, mounted } = sliderState();
+  const { currSlide, items, direction } = sliderState();
 
   // useEffect(() => {
   //   spanRefs.current.forEach((span, idx) => {
