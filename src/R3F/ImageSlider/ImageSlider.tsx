@@ -12,7 +12,9 @@ declare module "@react-three/fiber" {
       uTexture: THREE.Texture | null;
       uPrevTexture: THREE.Texture | null;
       uProgress: number;
+      uPushForce: number;
       uDirection: number;
+      uMousePosition: number[];
     };
   }
 }
@@ -31,6 +33,7 @@ const ImageSlider: FC<ImageSliderProps> = ({ width, height, fillPercent }) => {
   const ratio = viewPort.height / (height / fillPercent);
 
   const materialRef = useRef<THREE.ShaderMaterial>(null);
+  const hovered = useRef(false);
 
   const { items, currSlide } = sliderState();
 
@@ -62,23 +65,49 @@ const ImageSlider: FC<ImageSliderProps> = ({ width, height, fillPercent }) => {
     });
   }, []);
 
-  useFrame(() => {
+  useFrame(({ mouse }) => {
     if (!materialRef.current) return;
     materialRef.current.uniforms.uProgress.value = THREE.MathUtils.lerp(
       materialRef.current.uniforms.uProgress.value,
       1,
       0.05,
     );
+
+    materialRef.current.uniforms.uPushForce.value = THREE.MathUtils.lerp(
+      materialRef.current.uniforms.uPushForce.value,
+      hovered.current ? 1.4 : 0,
+      0.05,
+    );
+
+    materialRef.current.uniforms.uMousePosition.value = [
+      THREE.MathUtils.lerp(
+        materialRef.current.uniforms.uMousePosition.value[0],
+        mouse.x,
+        0.05,
+      ),
+      THREE.MathUtils.lerp(
+        materialRef.current.uniforms.uMousePosition.value[1],
+        mouse.y,
+        0.05,
+      ),
+    ];
   });
 
   return (
-    <mesh>
-      <planeGeometry args={[width * ratio, height * ratio]} />
+    <mesh
+      onPointerEnter={() => (hovered.current = true)}
+      onPointerLeave={() => (hovered.current = false)}
+    >
+      <planeGeometry args={[width * ratio, height * ratio, 32, 32]} />
       <imageSliderMaterial
+        wireframe
         ref={materialRef}
         uTexture={texture}
         uPrevTexture={prevTexture}
         uProgress={0.5}
+        uDirection={1}
+        uPushForce={1.4}
+        uMousePosition={[0, 0]}
       />
     </mesh>
   );

@@ -19,13 +19,12 @@ const UI = () => {
   } = sliderState();
 
   let prevIdx = direction === "next" ? currSlide - 1 : currSlide + 1;
-  useEffect(() => {
-    if (prevIdx === items.length) {
-      prevIdx = 0;
-    } else if (prevIdx === -1) {
-      prevIdx = items.length - 1;
-    }
-  }, [direction, prevIdx]);
+
+  if (prevIdx === items.length) {
+    prevIdx = 0;
+  } else if (prevIdx === -1) {
+    prevIdx = items.length - 1;
+  }
 
   useEffect(() => {
     setMounted(true);
