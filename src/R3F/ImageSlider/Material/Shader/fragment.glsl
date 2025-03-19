@@ -5,6 +5,14 @@
   uniform float uProgress;
   uniform float uDirection;
 
+  float sdRoundedBox( in vec2 p, in vec2 b, in vec4 r )
+{
+  r.xy = (p.x>0.0)?r.xy : r.zw;
+  r.x  = (p.y>0.0)?r.x  : r.y;
+  vec2 q = abs(p)-b+r.x;
+  return min(max(q.x,q.y),0.0) + length(max(q,0.0)) - r.x;
+}
+
   float rand(vec2 n) {
   return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
 }
@@ -40,8 +48,14 @@ float noise(vec2 p){
 
     vec4 currTexture = vec4(currTextureR, currTextureG, currTextureB, currTextureA);
 
-
     vec4 finalTexture = mix(prevTexture, currTexture, uProgress);          
+
+    vec2 centeredUV = (vUv - .5) * 2.0;
+
+    float frame = sdRoundedBox(centeredUV, vec2(1.0), vec4(0.2, 0.0,0.0,0.2));
+    frame = smoothstep(0.0, 0.002, -frame);
+    finalTexture.a *= frame;
+
     gl_FragColor = finalTexture;
 
   }

@@ -132,6 +132,7 @@ const ImageSlider: FC<ImageSliderProps> = ({ width, height, fillPercent }) => {
         uDirection={1}
         uPushForce={1.4}
         uMousePosition={[0, 0]}
+        transparent
       />
     </mesh>
   );
