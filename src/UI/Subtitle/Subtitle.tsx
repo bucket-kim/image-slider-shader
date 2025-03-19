@@ -1,27 +1,17 @@
 import { motion } from "framer-motion";
-import { FC, useEffect, useRef } from "react";
-import { item } from "../../States/sliderStateTypes";
+import { FC, useRef } from "react";
+import { sliderState } from "../../States/sliderState";
 import SubtitleStyleContainer from "./SubtitleStyleContainer";
-const TEXT_TRANSITION_HEIGHT = 100;
+const TEXT_TRANSITION_HEIGHT = 150;
 
 interface SubtitleProps {
-  items: item[];
   prevIdx: number;
-  currSlide: number;
-  direction: string;
 }
 
-const Subtitle: FC<SubtitleProps> = ({
-  items,
-  prevIdx,
-  currSlide,
-  direction,
-}) => {
+const Subtitle: FC<SubtitleProps> = ({ prevIdx }) => {
   const itemRef = useRef<HTMLDivElement[]>([]);
 
-  useEffect(() => {
-    itemRef.current.map((item) => console.log(item));
-  }, []);
+  const { currSlide, items, direction } = sliderState();
 
   return (
     <SubtitleStyleContainer>

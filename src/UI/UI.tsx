@@ -26,12 +26,7 @@ const UI = () => {
         <ShortTitle title={items[currSlide].short} />
         <Arrow direction="left" onClick={prevSlide} />
         <Arrow direction="right" onClick={nextSlide} />
-        <Subtitle
-          items={items}
-          prevIdx={prevIdx}
-          currSlide={currSlide}
-          direction={direction}
-        />
+        <Subtitle prevIdx={prevIdx} />
         <Description description={items[currSlide].description} />
       </div>
     </UIStyledContainer>
