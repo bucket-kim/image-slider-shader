@@ -39,10 +39,6 @@ const UI = () => {
     setIsAnimating(true);
   }, []);
 
-  useEffect(() => {
-    console.log(isAnimating);
-  }, [isAnimating]);
-
   return (
     <UIStyledContainer>
       <div className="slider-container">

@@ -1,4 +1,5 @@
 import { Canvas } from "@react-three/fiber";
+import BG from "./BG/BG";
 import ImageSlider from "./ImageSlider/ImageSlider";
 
 const R3F = () => {
@@ -13,7 +14,7 @@ const R3F = () => {
         left: "0",
       }}
     >
-      <color attach="background" args={["#201d24"]} />
+      <BG />
       {/* <OrbitControls /> */}
       <ImageSlider width={3} height={4} fillPercent={0.75} />
     </Canvas>
