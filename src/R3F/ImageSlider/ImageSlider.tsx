@@ -100,13 +100,13 @@ const ImageSlider: FC<ImageSliderProps> = ({ width, height, fillPercent }) => {
     >
       <planeGeometry args={[width * ratio, height * ratio, 32, 32]} />
       <imageSliderMaterial
-        wireframe
+        // wireframe
         ref={materialRef}
         uTexture={texture}
         uPrevTexture={prevTexture}
         uProgress={0.5}
         uDirection={1}
-        uPushForce={1.4}
+        uPushForce={0.4}
         uMousePosition={[0, 0]}
       />
     </mesh>

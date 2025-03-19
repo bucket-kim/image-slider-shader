@@ -1,4 +1,5 @@
  varying vec2 vUv;
+ varying float vPushed;
   uniform sampler2D uTexture;
   uniform sampler2D uPrevTexture;
   uniform float uProgress;
@@ -21,15 +22,26 @@ float noise(vec2 p){
 
   void main() {
     vec2 uv = vUv;
+
+    // noise effect
     float noiseFactor = noise(gl_FragCoord.xy * .05);
 
     vec2 distortedPosition = vec2(uv.x - float(uDirection) * (1.0 - uProgress) * noiseFactor, uv.y);
-    vec4 curTexture = texture2D(uTexture, distortedPosition);
+    // vec4 curTexture = texture2D(uTexture, distortedPosition);
 
     vec2 distortedPositionPrev = vec2(uv.x + float(uDirection) *  uProgress * noiseFactor, uv.y);
     vec4 prevTexture = texture2D(uPrevTexture, distortedPositionPrev);
 
-    vec4 finalTexture = mix(prevTexture, curTexture, uProgress);          
+    // distorted effect 
+    float currTextureR = texture2D(uTexture, distortedPosition + vec2(vPushed * 0.062)).r;
+    float currTextureG = texture2D(uTexture, distortedPosition + vec2(vPushed * 0.042)).g;
+    float currTextureB = texture2D(uTexture, distortedPosition + vec2(vPushed * -0.032)).b;
+    float currTextureA = texture2D(uTexture, distortedPosition).a;
+
+    vec4 currTexture = vec4(currTextureR, currTextureG, currTextureB, currTextureA);
+
+
+    vec4 finalTexture = mix(prevTexture, currTexture, uProgress);          
     gl_FragColor = finalTexture;
 
   }

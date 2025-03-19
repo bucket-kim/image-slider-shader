@@ -3,7 +3,7 @@ import { extend } from "@react-three/fiber";
 import fragmentShader from "./Shader/fragment.glsl?raw";
 import vertexShader from "./Shader/vertex.glsl?raw";
 
-const PUSH_FORCE = 1.4;
+const PUSH_FORCE = 0.4;
 
 const ImageSliderMaterial = shaderMaterial(
   {
