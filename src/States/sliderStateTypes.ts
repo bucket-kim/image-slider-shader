@@ -1,4 +1,4 @@
-interface item {
+export interface item {
   image: string;
   short: string;
   title: string;

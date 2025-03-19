@@ -24,6 +24,20 @@ const SubtitleStyleContainer = styled.div`
     height: 4rem;
     -webkit-font-smoothing: antialiased;
 
+    .subtitle-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      text-align: right;
+      @media (min-width: 768px) {
+        text-align: left;
+      }
+      span {
+        display: inline-block;
+      }
+    }
+
     @media (min-width: 768px) {
       font-size: 6rem;
       height: 7rem;
