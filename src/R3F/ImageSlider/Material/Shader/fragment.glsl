@@ -2,6 +2,7 @@
  varying float vPushed;
   uniform sampler2D uTexture;
   uniform sampler2D uPrevTexture;
+  uniform sampler2D uDispTexture;
   uniform float uProgress;
   uniform float uDirection;
 
@@ -32,7 +33,12 @@ float noise(vec2 p){
     vec2 uv = vUv;
 
     // noise effect
-    float noiseFactor = noise(gl_FragCoord.xy * .05);
+    // float noiseFactor = noise(gl_FragCoord.xy * .05);
+    float noiseFactor = 0.0;
+
+    float dispTexture = texture2D(uDispTexture, uv).r;
+
+    noiseFactor = dispTexture;
 
     vec2 distortedPosition = vec2(uv.x - float(uDirection) * (1.0 - uProgress) * noiseFactor, uv.y);
     // vec4 curTexture = texture2D(uTexture, distortedPosition);

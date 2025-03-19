@@ -11,6 +11,7 @@ const ImageSliderMaterial = shaderMaterial(
     uPushForce: PUSH_FORCE,
     uTexture: null,
     uPrevTexture: null,
+    uDispTexture: null,
     uDirection: 1,
     uMousePosition: [0, 0],
   },

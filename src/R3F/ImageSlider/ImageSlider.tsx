@@ -11,6 +11,7 @@ declare module "@react-three/fiber" {
     imageSliderMaterial: JSX.IntrinsicElements["meshStandardMaterial"] & {
       uTexture: THREE.Texture | null;
       uPrevTexture: THREE.Texture | null;
+      uDispTexture: THREE.Texture | null;
       uProgress: number;
       uPushForce: number;
       uDirection: number;
@@ -42,6 +43,8 @@ const ImageSlider: FC<ImageSliderProps> = ({ width, height, fillPercent }) => {
 
   const [lastImage, setLastImage] = useState(image);
   const [transition, setTransition] = useState(false);
+
+  const dispTexture = useTexture("/textures/ice_crack.jpg");
 
   const prevTexture = useTexture(lastImage);
   texture.wrapS =
@@ -128,6 +131,7 @@ const ImageSlider: FC<ImageSliderProps> = ({ width, height, fillPercent }) => {
         ref={materialRef}
         uTexture={texture}
         uPrevTexture={prevTexture}
+        uDispTexture={dispTexture}
         uProgress={0.5}
         uDirection={1}
         uPushForce={1.4}
